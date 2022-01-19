@@ -1,0 +1,33 @@
+---
+
+spring.rabbitmq.username: "java"
+spring.rabbitmq.password: "java"
+spring.rabbitmq.host: "localhost"
+
+---
+
+logging:
+  level:
+    org.springframework.web: "INFO"
+    org.springframework.boot: "ERROR"
+    org.springframework.context: "ERROR"
+    org.springframework.integration: "ERROR"
+    com.korpicorp.tac: "INFO"
+
+---
+
+mq:
+  queuename: "java"
+  exchangename: "java"
+
+---
+
+aws:
+  region: "eu-west-1"
+
+---
+
+http:
+  auth:
+    header: "api-key"
+    token: "sometoken"

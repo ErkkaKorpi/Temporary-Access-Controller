@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  mq:
+    image: "heidiks/rabbitmq-delayed-message-exchange:latest"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "java"
+      RABBITMQ_DEFAULT_PASS: "java"
+  tac:
+    image: "tac:latest"
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_RABBITMQ_HOST: "mq"
+    depends_on:
+      - "mq"
+    command: [ "sh", "-c", "sleep 10 && dumb-init java -jar /opt/code/tac.jar" ]
